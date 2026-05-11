@@ -1,5 +1,4 @@
 import * as three from "three";
-import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { floorMesh, speedZ, floorTexture } from "./floor";
 import { pointMesh } from "./points";
 
@@ -28,9 +27,6 @@ scene.add(camera);
 const renderer = new three.WebGLRenderer({ antialias: true });
 document.body.appendChild(renderer.domElement);
 renderer.setSize(sizes.width, sizes.height);
-
-const control = new OrbitControls(camera, renderer.domElement);
-control.enableDamping = true;
 
 const boxGeometry = new three.BoxGeometry(1, 1, 1);
 const boxMaterial = new three.MeshBasicMaterial({ color: "#23ED00" });
@@ -180,7 +176,6 @@ const animate = () => {
   }
 
   renderer.render(scene, camera);
-  control.update();
   window.requestAnimationFrame(animate);
 };
 animate();
